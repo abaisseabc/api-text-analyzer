@@ -11,18 +11,19 @@ analyzer = Blueprint("analyzer", __name__)
 def analyze_test():
     try:
         user_data = request.get_json()
-        machine, human = MachineTextDetector().get_result_analysis(user_data["text"])
+        machine, human, sentences_ai = MachineTextDetector().get_result_analysis(user_data["text"])
         return {
             "status": "success",
             "data": {
                 "human": human,
                 "machine": machine,
+                "sentences_ai": sentences_ai,
             },
-            "message": "Проверка текста прошла успешно!"
+            "message": "Проверка текста прошла успешно!",
         }
     except Exception as err:
         return {
             "status": "error",
             "data": None,
-            "message": f"Произошла ошибка: {err}"
+            "message": f"Произошла ошибка: {err}",
         }

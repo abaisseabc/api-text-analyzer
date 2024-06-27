@@ -101,7 +101,11 @@ class MachineTextDetector:
 
     def get_result_analysis(self, text: str):
         machine_percentage, human_percentage, analysis = self.analyze_text(text)
-        for sentence, result in analysis:
-            print(f"'{sentence}' -> {result}")
-
-        return f"{machine_percentage:.2f}", f"{human_percentage:.2f}"
+        sentences_ai = [
+            {
+                "sentence": sentence,
+                "result": result
+            }
+            for sentence, result in analysis
+        ]
+        return f"{machine_percentage:.2f}", f"{human_percentage:.2f}", sentences_ai
