@@ -1,7 +1,8 @@
 import re
-from collections import Counter
 import language_tool_python
 import spacy
+
+from collections import Counter
 
 
 class MachineTextDetector:
